@@ -23,9 +23,9 @@ class CustomResponse implements CustomResponseInterface
     private string $status = '';
 
     /**
-     * @var int
+     * @var int|string
      */
-    private int $code = 0;
+    private int|string $code = 0;
 
     /**
      * @var string
