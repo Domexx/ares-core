@@ -1,8 +1,8 @@
 <?php
 /**
- * Ares (https://ares.to)
+ * @copyright Copyright (c) Ares (https://www.ares.to)
  *
- * @license https://gitlab.com/arescms/ares-backend/LICENSE (MIT License)
+ * @see LICENSE (MIT)
  */
 
 namespace Ares\Framework\Provider;
@@ -32,7 +32,7 @@ class AppServiceProvider extends AbstractServiceProvider
     {
         $container = $this->getContainer();
 
-        $container->add(App::class, function () use ($container) {
+        $container->share(App::class, function () use ($container) {
             AppFactory::setContainer($container);
 
             return AppFactory::create();
