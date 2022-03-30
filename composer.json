@@ -20,8 +20,8 @@
   "require": {
     "ext-json": "*",
     "cocur/slugify": "^4.0",
-    "illuminate/database": "^9.0@dev",
-    "illuminate/pagination": "^9.0@dev",
+    "illuminate/database": "dev-master",
+    "illuminate/pagination": "dev-master",
     "league/container": "3.3.3",
     "monolog/monolog": "^1.24",
     "phlak/config": "^7.0",
@@ -32,16 +32,13 @@
     "slim/psr7": "^1.3.0",
     "slim/slim": "^4.6.0",
     "statical/statical": "dev-master",
-    "symfony/console": "^5.2",
+    "symfony/console": "^6.1",
     "tuupola/cors-middleware": "^1.2",
     "vlucas/phpdotenv": "^5.0@dev"
   },
   "config": {
     "sort-packages": true,
-    "optimize-autoloader": true,
-    "platform": {
-      "php": "8.0"
-    }
+    "optimize-autoloader": true
   },
   "autoload": {
     "psr-4": {
