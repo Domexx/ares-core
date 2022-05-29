@@ -9,7 +9,7 @@ namespace Ares\Framework\Provider;
 
 use Ares\Framework\Middleware\ThrottleMiddleware;
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use PHLAK\Config\Config;
+use Ares\Framework\Config;
 use Predis\Client;
 
 /**

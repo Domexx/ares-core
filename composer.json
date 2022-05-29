@@ -25,7 +25,6 @@
     "juliangut/mapping": "^1.1",
     "league/container": "3.3.3",
     "monolog/monolog": "^1.24",
-    "phlak/config": "dev-master",
     "phpfastcache/phpfastcache": "^8.0",
     "predis/predis": "^2.0@dev",
     "rakit/validation": "^1.4",

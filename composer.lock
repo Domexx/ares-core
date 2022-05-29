@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aaf8b5ad6758270bca66f8abdf9fe92a",
+    "content-hash": "b4fcaa2bbdad6d08c614ae69fed4a844",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -1409,65 +1409,6 @@
                 }
             ],
             "time": "2022-02-02T18:37:57+00:00"
-        },
-        {
-            "name": "phlak/config",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/PHLAK/Config.git",
-                "reference": "55448430f3b926fe05467048ea050217868294d4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/PHLAK/Config/zipball/55448430f3b926fe05467048ea050217868294d4",
-                "reference": "55448430f3b926fe05467048ea050217868294d4",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "symfony/yaml": "^3.0 || ^4.0 || ^5.0",
-                "yosymfony/toml": "^1.0"
-            },
-            "require-dev": {
-                "phlak/coding-standards": "^2.0",
-                "psy/psysh": "^0.11",
-                "vimeo/psalm": "^4.7",
-                "yoast/phpunit-polyfills": "^1.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "PHLAK\\Config\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Chris Kankiewicz",
-                    "email": "Chris@ChrisKankiewicz.com"
-                }
-            ],
-            "description": "Config loading and management",
-            "support": {
-                "issues": "https://github.com/PHLAK/Config/issues",
-                "source": "https://github.com/PHLAK/Config/tree/master"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/sponsors/PHLAK",
-                    "type": "github"
-                },
-                {
-                    "url": "https://paypal.me/ChrisKankiewicz",
-                    "type": "paypal"
-                }
-            ],
-            "time": "2022-01-03T15:19:54+00:00"
         },
         {
             "name": "php-http/message-factory",
@@ -3650,81 +3591,6 @@
             "time": "2022-04-22T07:30:54+00:00"
         },
         {
-            "name": "symfony/yaml",
-            "version": "v5.4.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "e80f87d2c9495966768310fc531b487ce64237a2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/e80f87d2c9495966768310fc531b487ce64237a2",
-                "reference": "e80f87d2c9495966768310fc531b487ce64237a2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "symfony/deprecation-contracts": "^2.1|^3",
-                "symfony/polyfill-ctype": "^1.8"
-            },
-            "conflict": {
-                "symfony/console": "<5.3"
-            },
-            "require-dev": {
-                "symfony/console": "^5.3|^6.0"
-            },
-            "suggest": {
-                "symfony/console": "For validating YAML files using the lint command"
-            },
-            "bin": [
-                "Resources/bin/yaml-lint"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Yaml\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Loads and dumps YAML files",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/yaml/tree/v5.4.3"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-01-26T16:32:32+00:00"
-        },
-        {
             "name": "tuupola/callable-handler",
             "version": "1.1.0",
             "source": {
@@ -4074,116 +3940,6 @@
                 }
             ],
             "time": "2022-03-08T17:03:00+00:00"
-        },
-        {
-            "name": "yosymfony/parser-utils",
-            "version": "v2.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yosymfony/parser-utils.git",
-                "reference": "00bec9a12722b21f2baf7f9db35f127e90c162c9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yosymfony/parser-utils/zipball/00bec9a12722b21f2baf7f9db35f127e90c162c9",
-                "reference": "00bec9a12722b21f2baf7f9db35f127e90c162c9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^6"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Yosymfony\\ParserUtils\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Victor Puertas",
-                    "email": "vpgugr@gmail.com",
-                    "homepage": "http://yosymfony.com"
-                }
-            ],
-            "description": "Parser utilities",
-            "homepage": "http://github.com/yosymfony/toml",
-            "keywords": [
-                "lexer",
-                "parser"
-            ],
-            "support": {
-                "issues": "https://github.com/yosymfony/parser-utils/issues",
-                "source": "https://github.com/yosymfony/parser-utils/tree/master"
-            },
-            "time": "2018-06-29T15:31:11+00:00"
-        },
-        {
-            "name": "yosymfony/toml",
-            "version": "v1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/yosymfony/toml.git",
-                "reference": "bdab92ad920d0e36810a3a3e4a998d23f3498f8e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/yosymfony/toml/zipball/bdab92ad920d0e36810a3a3e4a998d23f3498f8e",
-                "reference": "bdab92ad920d0e36810a3a3e4a998d23f3498f8e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1",
-                "yosymfony/parser-utils": "^2.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^7.1"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Yosymfony\\Toml\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Victor Puertas",
-                    "email": "vpgugr@gmail.com",
-                    "homepage": "http://yosymfony.com"
-                }
-            ],
-            "description": "A PHP parser for TOML compatible with specification 0.4.0",
-            "homepage": "http://github.com/yosymfony/toml",
-            "keywords": [
-                "mojombo",
-                "parser",
-                "toml"
-            ],
-            "support": {
-                "issues": "https://github.com/yosymfony/toml/issues",
-                "source": "https://github.com/yosymfony/toml/tree/master"
-            },
-            "time": "2018-08-08T15:08:14+00:00"
         }
     ],
     "packages-dev": [
@@ -6209,7 +5965,6 @@
     "stability-flags": {
         "illuminate/database": 20,
         "illuminate/pagination": 20,
-        "phlak/config": 20,
         "predis/predis": 20,
         "statical/statical": 20,
         "vlucas/phpdotenv": 20

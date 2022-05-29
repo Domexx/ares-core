@@ -9,7 +9,7 @@ namespace Ares\Framework\Provider;
 
 use Cocur\Slugify\Slugify;
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use PHLAK\Config\Config;
+use Ares\Framework\Config;
 
 /**
  * Class SlugServiceProvider
