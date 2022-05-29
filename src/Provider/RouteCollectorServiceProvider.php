@@ -12,6 +12,8 @@ use Ares\Framework\Response\Handler\XmlResponseHandler;
 use Ares\Framework\Response\PayloadResponse;
 use Ares\Framework\RouteCollector;
 use Ares\Framework\Strategy\RequestHandler;
+use Phpfastcache\Helper\Psr16Adapter;
+use Phpfastcache\Helper\Psr16Adapter as FastCache;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use Slim\App;
 use Slim\Interfaces\RouteCollectorInterface;
@@ -41,6 +43,9 @@ class RouteCollectorServiceProvider extends AbstractServiceProvider
             /** @var App $app */
             $app = $container->get(App::class);
 
+            /** @var Psr16Adapter $cache */
+            $cache = $container->get(FastCache::class);
+
             /** @var RouteCollector $routeCollector */
             $routeCollector = $app->getRouteCollector();
 
@@ -57,6 +62,8 @@ class RouteCollectorServiceProvider extends AbstractServiceProvider
 
             $routeCollector->setDefaultInvocationStrategy($invocationStrategy);
             $routeCollector->registerRoutes();
+            $routeCollector->setCache($cache);
+            $routeCollector->setCachePrefix("ARES_ROUTE_COLLECTOR");
 
             return $routeCollector;
         });
