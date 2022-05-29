@@ -10,6 +10,7 @@ namespace Ares\Framework\Provider;
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use Monolog\Logger;
 use PHLAK\Config\Config;
+use PHLAK\Config\Exceptions\InvalidContextException;
 
 /**
  * Class ConfigServiceProvider
@@ -27,6 +28,7 @@ class ConfigServiceProvider extends AbstractServiceProvider
 
     /**
      * Registers new service.
+     * @throws InvalidContextException
      */
     public function register()
     {

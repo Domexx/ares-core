@@ -22,7 +22,7 @@ class LocaleService
      * @param Locale $locale
      */
     public function __construct(
-        private Locale $locale
+        private readonly Locale $locale
     ) {}
 
     /**

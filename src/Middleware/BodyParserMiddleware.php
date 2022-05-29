@@ -34,7 +34,7 @@ class BodyParserMiddleware implements MiddlewareInterface
     ): Response {
         $contentType = $request->getHeaderLine('Content-Type');
 
-        if (false !== strpos($contentType, 'application/json')) {
+        if (str_contains($contentType, 'application/json')) {
             $contents = json_decode(
                 @file_get_contents('php://input'),
                 true,

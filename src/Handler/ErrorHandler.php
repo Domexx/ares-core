@@ -34,9 +34,9 @@ class ErrorHandler implements ErrorHandlerInterface
      * @param LoggerInterface          $logger
      */
     public function __construct(
-        private ResponseFactoryInterface $responseFactory,
+        private readonly ResponseFactoryInterface $responseFactory,
         private CustomResponse $customResponse,
-        private LoggerInterface $logger
+        private readonly LoggerInterface $logger
     ) {}
 
     /**
@@ -105,11 +105,7 @@ class ErrorHandler implements ErrorHandlerInterface
     private function withStatus(ResponseInterface $response, Throwable|BaseException $exception): ResponseInterface
     {
         try {
-            if ($_ENV['API_DEBUG'] == 'development') {
-                return $response->withStatus($exception->getCode());
-            } else {
-                return $response->withStatus(HttpResponseCodeInterface::HTTP_RESPONSE_OK);
-            }
+            return $response->withStatus($exception->getCode());
         } catch (\Exception) {
             return $response->withStatus(HttpResponseCodeInterface::HTTP_RESPONSE_INTERNAL_SERVER_ERROR);
         }

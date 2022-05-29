@@ -35,7 +35,7 @@ class DataBuilder extends Builder
      * @return PaginatedCollection
      * @throws BindingResolutionException
      */
-    protected function paginator($items, $total, $perPage, $currentPage, $options)
+    protected function paginator($items, $total, $perPage, $currentPage, $options): PaginatedCollection
     {
         return Container::getInstance()->makeWith(PaginatedCollection::class, compact(
             'items', 'total', 'perPage', 'currentPage', 'options'
@@ -45,16 +45,20 @@ class DataBuilder extends Builder
     /**
      * Paginate the given query into a simple paginator.
      *
-     * @param int      $perPage
-     * @param array    $columns
-     * @param string   $pageName
-     * @param int|null $page
+     * @param int $perPage
+     * @param array $columns
+     * @param string $pageName
+     * @param null $page
      *
-     * @return LengthAwarePaginator
+     * @return LengthAwarePaginator|PaginatedCollection
      * @throws BindingResolutionException
      */
-    public function paginate($perPage = 15, $columns = ['*'], $pageName = 'page', $page = null)
-    {
+    public function paginate(
+        $perPage = 15,
+        $columns = ['*'],
+        $pageName = 'page',
+        $page = null
+    ): LengthAwarePaginator|PaginatedCollection {
         $page = $page ?: Paginator::resolveCurrentPage($pageName);
 
         $total = $this->getCountForPagination();

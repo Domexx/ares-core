@@ -28,7 +28,7 @@ class ValidationService
      * @param Validator $validator
      */
     public function __construct(
-        private Validator $validator
+        private readonly Validator $validator
     ) {}
 
     /**

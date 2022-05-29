@@ -32,7 +32,7 @@ class ClaimMiddleware implements MiddlewareInterface
         ServerRequestInterface $request,
         RequestHandlerInterface $handler
     ): ResponseInterface {
-        $authorization = explode(' ', (string) $request->getHeaderLine('Authorization'));
+        $authorization = explode(' ', $request->getHeaderLine('Authorization'));
         $type          = $authorization[0] ?? '';
         $credentials   = $authorization[1] ?? '';
         $secret        = $_ENV['TOKEN_SECRET'];

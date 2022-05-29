@@ -70,6 +70,7 @@ class DataObjectManager extends DataBuilder
      *
      * @param string $relation
      * @return DataObjectManager
+     * @throws DataObjectManagerException
      */
     public function addRelation(string $relation): DataObjectManager
     {
@@ -93,7 +94,7 @@ class DataObjectManager extends DataBuilder
      * @param string[] $columns
      * @return Collection
      */
-    public function getExcept($columns = []): Collection
+    public function getExcept(array $columns = []): Collection
     {
         $items = [];
 

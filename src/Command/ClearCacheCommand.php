@@ -43,10 +43,10 @@ class ClearCacheCommand extends Command
      *
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
-            $this->deleteCache(self::TMP_PATH);
+            $this->deleteCache();
         } catch (\Exception $e) {
             $output->writeln('<error>' . $e->getMessage() . '</error>');
 
@@ -61,11 +61,9 @@ class ClearCacheCommand extends Command
     /**
      * Deletes the cache recursive
      *
-     * @param $dir
-     *
      * @return bool
      */
-    private function deleteCache($dir): bool
+    private function deleteCache(): bool
     {
         /** @var Client $predisClient */
         $predisClient = container()->get(Client::class);
@@ -75,11 +73,11 @@ class ClearCacheCommand extends Command
             return true;
         }
 
-        if (is_dir($dir)) {
-            array_map([$this, 'deleteCache'], glob($dir . DIRECTORY_SEPARATOR . '{,.[!.]}*', GLOB_BRACE));
-            return @rmdir($dir);
+        if (is_dir(self::TMP_PATH)) {
+            array_map([$this, 'deleteCache'], glob(self::TMP_PATH . DIRECTORY_SEPARATOR . '{,.[!.]}*', GLOB_BRACE));
+            return @rmdir(self::TMP_PATH);
         }
 
-        return @unlink($dir);
+        return @unlink(self::TMP_PATH);
     }
 }

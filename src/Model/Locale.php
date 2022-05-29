@@ -42,7 +42,7 @@ class Locale
      * @param LocaleHelper $localeHelper
      */
     public function __construct(
-        private LocaleHelper $localeHelper
+        private readonly LocaleHelper $localeHelper
     ) {}
 
     /**

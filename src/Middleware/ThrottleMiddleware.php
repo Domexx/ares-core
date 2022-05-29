@@ -49,7 +49,7 @@ class ThrottleMiddleware implements MiddlewareInterface
      * @param Predis $predis
      */
     public function __construct(
-        private Predis $predis
+        private readonly Predis $predis
     ) {}
 
     /**

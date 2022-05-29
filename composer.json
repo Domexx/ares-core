@@ -18,7 +18,6 @@
     }
   ],
   "require": {
-    "ext-json": "*",
     "cocur/slugify": "^4.0",
     "illuminate/database": "dev-master",
     "illuminate/pagination": "dev-master",

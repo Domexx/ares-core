@@ -23,7 +23,7 @@ class Collection extends IlluminateCollection
      * @param null  $default
      * @return array|mixed
      */
-    public function get($key, $default = null)
+    public function get($key, $default = null): mixed
     {
         $result = array_column($this->items, $key);
 

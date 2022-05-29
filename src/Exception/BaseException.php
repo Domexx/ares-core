@@ -19,18 +19,18 @@ abstract class BaseException extends \Exception
     /**
      * BaseException constructor.
      *
-     * @param string         $message
-     * @param int            $customCode
-     * @param int            $code
+     * @param string $message
+     * @param int|string $customCode
+     * @param int|string $code
      * @param Throwable|null $previous
      */
     public function __construct(
         protected $message = "",
-        protected $customCode = 1,
+        protected int|string $customCode = 1,
         protected $code = 200,
         Throwable $previous = null
     ) {
-        parent::__construct($message, (int) $code, $previous);
+        parent::__construct($message, $code, $previous);
     }
 
     /**

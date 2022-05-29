@@ -15,6 +15,7 @@ use Ares\Framework\Model\Query\DataObjectManager;
 use Ares\Framework\Model\Query\PaginatedCollection;
 use Ares\Framework\Service\CacheService;
 use Ares\Framework\Model\Query\Collection;
+use Illuminate\Contracts\Container\BindingResolutionException;
 
 /**
  * Class BaseRepository
@@ -27,7 +28,7 @@ abstract class BaseRepository
     private const COLUMN_ID = 'id';
 
     /** @var int */
-    private const PAGINATION_DATA_LIMIT = 50;
+    protected int $paginationLimit = 50;
 
     /**
      * @var string
@@ -51,8 +52,8 @@ abstract class BaseRepository
      * @param CacheService             $cacheService
      */
     public function __construct(
-        private DataObjectManagerFactory $dataObjectManagerFactory,
-        private CacheService $cacheService
+        private readonly DataObjectManagerFactory $dataObjectManagerFactory,
+        private readonly CacheService             $cacheService
     ) {}
 
     /**
@@ -156,16 +157,16 @@ abstract class BaseRepository
      * @param int               $limit
      *
      * @return PaginatedCollection
-     * @throws DataObjectManagerException
+     * @throws DataObjectManagerException|BindingResolutionException
      */
     public function getPaginatedList(
         DataObjectManager $dataObjectManager,
         int $pageNumber,
         int $limit
     ): PaginatedCollection {
-        if ($limit > self::PAGINATION_DATA_LIMIT) {
+        if ($limit > $this->paginationLimit) {
             throw new DataObjectManagerException(
-                __('You cant exceed the Limit of %s', [self::PAGINATION_DATA_LIMIT])
+                __('You cant exceed the Limit of %s', [$this->paginationLimit])
             );
         }
 
@@ -198,6 +199,8 @@ abstract class BaseRepository
         $id = $entity->getData(self::COLUMN_ID);
 
         try {
+            /** @TODO rework this so it works with relations attached */
+            $entity->clearRelations();
             if ($id) {
                 $dataObjectManager
                     ->where(self::COLUMN_ID, $id)
@@ -255,13 +258,14 @@ abstract class BaseRepository
      * Returns one to one relation.
      *
      * @param BaseRepository $repository
-     * @param int|null       $id
-     * @param string         $column
+     * @param int|null $id
+     * @param string $column
      * @return DataObject|null
+     * @throws NoSuchEntityException
      */
     public function getOneToOne(BaseRepository $repository, ?int $id, string $column): ?DataObject
     {
-        return $repository->get($id, $column, true, true);
+        return $repository->get($id, $column, true);
     }
 
     /**
@@ -295,8 +299,7 @@ abstract class BaseRepository
         string $pivotTable,
         string $primaryPivotColumn,
         string $foreignPivotColumn
-    ): Collection
-    {
+    ): Collection {
         $primaryTable = $this->entity::TABLE;
         $primaryTableColumn = $this->entity::PRIMARY_KEY;
         $foreignTable = $repository->getEntity()::TABLE;
@@ -345,7 +348,7 @@ abstract class BaseRepository
      * @param Collection|PaginatedCollection $collection
      * @return void
      */
-    private function cacheCollection(string $cacheKey, $collection): void
+    private function cacheCollection(string $cacheKey, Collection|PaginatedCollection $collection): void
     {
         $cacheTags = [];
 

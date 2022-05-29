@@ -29,8 +29,8 @@ class CacheService
      * @param LoggerInterface $logger
      */
     public function __construct(
-        private FastCache $fastCache,
-        private LoggerInterface $logger
+        private readonly FastCache $fastCache,
+        private readonly LoggerInterface $logger
     ) {}
 
     /**

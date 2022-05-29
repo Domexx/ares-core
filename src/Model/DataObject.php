@@ -46,7 +46,7 @@ class DataObject implements JsonSerializable
      * @param string|null $key
      * @return mixed|array|null
      */
-    public function getData(mixed $key = null)
+    public function getData(mixed $key = null): mixed
     {
         if (!$key) {
             return (array) $this ?? [];
@@ -66,7 +66,7 @@ class DataObject implements JsonSerializable
      * @param mixed $value
      * @return $this
      */
-    public function setData(string $key, mixed $value)
+    public function setData(string $key, mixed $value): static
     {
         $this->{$key} = $value;
         return $this;

@@ -32,7 +32,7 @@ class LocaleMiddleware implements MiddlewareInterface
      * @param Locale $locale
      */
     public function __construct(
-        private Locale $locale
+        private readonly Locale $locale
     ) {}
 
     /**

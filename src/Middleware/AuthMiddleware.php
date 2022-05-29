@@ -27,10 +27,10 @@ class AuthMiddleware implements MiddlewareInterface
     /**
      * Auth constructor.
      *
-     * @param   ResponseFactoryInterface  $responseFactory
+     * @param ResponseFactoryInterface $responseFactory
      */
     public function __construct(
-        private ResponseFactoryInterface $responseFactory
+        private readonly ResponseFactoryInterface $responseFactory
     ) {}
 
     /**
