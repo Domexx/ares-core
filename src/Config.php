@@ -102,7 +102,7 @@ class Config implements ConfigInterface, ArrayAccess, IteratorAggregate
      *
      * @return mixed Stored config item or $default value
      */
-    public function get(string $key, $default = null)
+    public function get(string $key, mixed $default = null): mixed
     {
         $config = $this->config;
 
