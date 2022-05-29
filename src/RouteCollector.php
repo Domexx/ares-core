@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework;
 
@@ -14,7 +9,6 @@ use Ares\Framework\Route\RouteResolver;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\SimpleCache\CacheInterface;
-use Psr\SimpleCache\InvalidArgumentException;
 use Slim\Interfaces\CallableResolverInterface;
 use Slim\Interfaces\InvocationStrategyInterface;
 use Slim\Interfaces\RouteInterface;
@@ -29,25 +23,32 @@ use Slim\Routing\RouteCollector as SlimRouteCollector;
 class RouteCollector extends SlimRouteCollector
 {
     /**
+     * Routing configuration.
+     *
+     * @var Configuration
+     */
+    protected $configuration;
+
+    /**
      * Metadata cache.
      *
      * @var CacheInterface|null
      */
-    protected ?CacheInterface $cache;
+    protected $cache;
 
     /**
      * Metadata cache prefix.
      *
      * @var string
      */
-    protected string $cachePrefix = '';
+    protected $cachePrefix = '';
 
     /**
      * Mapping routes have been loaded.
      *
      * @var bool
      */
-    private bool $routesRegistered = false;
+    private $routesRegistered = false;
 
     /**
      * RouteCollector constructor.
@@ -63,7 +64,7 @@ class RouteCollector extends SlimRouteCollector
      * @SuppressWarnings(PHPMD.LongVariable)
      */
     public function __construct(
-        protected Configuration $configuration,
+        Configuration $configuration,
         ResponseFactoryInterface $responseFactory,
         CallableResolverInterface $callableResolver,
         ?ContainerInterface $container = null,
@@ -79,6 +80,8 @@ class RouteCollector extends SlimRouteCollector
             $routeParser,
             $cacheFile
         );
+
+        $this->configuration = $configuration;
     }
 
     /**
@@ -103,7 +106,6 @@ class RouteCollector extends SlimRouteCollector
 
     /**
      * {@inheritdoc}
-     * @throws InvalidArgumentException
      */
     public function getRoutes(): array
     {
@@ -116,7 +118,6 @@ class RouteCollector extends SlimRouteCollector
 
     /**
      * {@inheritdoc}
-     * @throws InvalidArgumentException
      */
     public function lookupRoute(string $identifier): RouteInterface
     {
@@ -132,7 +133,6 @@ class RouteCollector extends SlimRouteCollector
      *
      * @throws \InvalidArgumentException
      * @throws \RuntimeException
-     * @throws InvalidArgumentException
      */
     final public function registerRoutes(): void
     {
@@ -167,7 +167,6 @@ class RouteCollector extends SlimRouteCollector
      * Get routes metadata.
      *
      * @return RouteMetadata[]
-     * @throws InvalidArgumentException
      */
     protected function getRoutesMetadata(): array
     {
@@ -217,7 +216,7 @@ class RouteCollector extends SlimRouteCollector
     }
 
     /**
-     * @param array $methods
+     * @param mixed[] $methods
      * @param string  $pattern
      * @param mixed   $handler
      *
@@ -239,9 +238,9 @@ class RouteCollector extends SlimRouteCollector
      * @return Route
      */
     protected function createMetadataRoute(
-        array          $methods,
-        string         $pattern,
-        mixed          $callable,
+        array $methods,
+        string $pattern,
+        $callable,
         ?RouteMetadata $metadata = null
     ): RouteInterface {
         return new Route(
@@ -261,7 +260,7 @@ class RouteCollector extends SlimRouteCollector
     /**
      * Get cache key.
      *
-     * @param array $mappingSources
+     * @param mixed[] $mappingSources
      *
      * @return string
      */

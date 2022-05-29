@@ -1,9 +1,4 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Loader;
 
@@ -15,7 +10,7 @@ class Ini extends Loader
      * Retrieve the contents of a .ini file and convert it to an array of
      * configuration options.
      *
-     * @throws InvalidFileException
+     * @throws \Ares\Framework\Exception\InvalidFileException
      *
      * @return array Array of configuration options
      */
@@ -23,7 +18,7 @@ class Ini extends Loader
     {
         $parsed = @parse_ini_file($this->context, true);
 
-        if (!$parsed) {
+        if (! $parsed) {
             throw new InvalidFileException('Unable to parse invalid INI file at ' . $this->context);
         }
 

@@ -7,10 +7,9 @@
 
 namespace Ares\Framework\Provider;
 
+use Ares\Framework\Exception\InvalidContextException;
 use League\Container\ServiceProvider\AbstractServiceProvider;
-use Monolog\Logger;
-use PHLAK\Config\Config;
-use PHLAK\Config\Exceptions\InvalidContextException;
+use Ares\Framework\Config;
 
 /**
  * Class ConfigServiceProvider

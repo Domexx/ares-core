@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Mapping\Driver;
 
@@ -26,14 +21,14 @@ trait MappingTrait
     /**
      * Get mapping data.
      *
-     * @return array
+     * @return mixed[]
      */
     abstract protected function getMappingData(): array;
 
     /**
      * Get routes metadata.
      *
-     * @param array $mappingData
+     * @param mixed[]            $mappingData
      * @param GroupMetadata|null $group
      *
      * @return RouteMetadata[]
@@ -54,7 +49,7 @@ trait MappingTrait
     /**
      * Get group metadata.
      *
-     * @param array $mapping
+     * @param mixed[]            $mapping
      * @param GroupMetadata|null $parentGroup
      *
      * @return GroupMetadata
@@ -87,7 +82,7 @@ trait MappingTrait
     /**
      * Get route metadata.
      *
-     * @param array $mapping
+     * @param mixed[]            $mapping
      * @param GroupMetadata|null $group
      *
      * @return RouteMetadata
@@ -130,7 +125,7 @@ trait MappingTrait
     /**
      * Get mapping prefix.
      *
-     * @param array $mapping
+     * @param mixed[] $mapping
      *
      * @return string|null
      */
@@ -144,7 +139,7 @@ trait MappingTrait
     /**
      * Get mapping name.
      *
-     * @param array $mapping
+     * @param mixed[] $mapping
      *
      * @return string|null
      */
@@ -158,7 +153,7 @@ trait MappingTrait
     /**
      * Get mapping methods.
      *
-     * @param array $mapping
+     * @param mixed[] $mapping
      *
      * @throws DriverException
      *
@@ -199,7 +194,7 @@ trait MappingTrait
     /**
      * Get parameter transformer.
      *
-     * @param array $mapping
+     * @param mixed[] $mapping
      *
      * @return string|null
      */
@@ -211,7 +206,7 @@ trait MappingTrait
     /**
      * Get XmlHttpRequest constraint.
      *
-     * @param array $mapping
+     * @param mixed[] $mapping
      *
      * @return bool
      */
@@ -223,7 +218,7 @@ trait MappingTrait
     /**
      * Get mapping priority.
      *
-     * @param array $mapping
+     * @param mixed[] $mapping
      *
      * @return int
      */
@@ -249,7 +244,7 @@ trait MappingTrait
     /**
      * Get mapping parameters.
      *
-     * @param array $mapping
+     * @param mixed[] $mapping
      *
      * @throws DriverException
      *
@@ -273,7 +268,7 @@ trait MappingTrait
     /**
      * Get mapping attributes.
      *
-     * @param array $mapping
+     * @param mixed[] $mapping
      *
      * @throws DriverException
      *
@@ -297,7 +292,7 @@ trait MappingTrait
     /**
      * Get mapping placeholders.
      *
-     * @param array $mapping
+     * @param mixed[] $mapping
      *
      * @throws DriverException
      *
@@ -321,11 +316,11 @@ trait MappingTrait
     /**
      * Get mapping middleware.
      *
-     * @param array $mapping
+     * @param mixed[] $mapping
      *
      * @throws DriverException
      *
-     * @return array
+     * @return mixed[]
      */
     protected function getMiddleware(array $mapping): array
     {
@@ -352,13 +347,13 @@ trait MappingTrait
     /**
      * Get mapping invokable.
      *
-     * @param array $mapping
+     * @param mixed[] $mapping
      *
      * @throws DriverException
      *
-     * @return string|array|callable
+     * @return string|mixed[]|callable
      */
-    protected function getInvokable(array $mapping): callable|array|string
+    protected function getInvokable(array $mapping)
     {
         if (!isset($mapping['invokable'])) {
             throw new DriverException('Route invokable definition missing');

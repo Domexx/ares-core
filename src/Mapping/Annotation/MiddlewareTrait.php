@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Mapping\Annotation;
 
@@ -19,7 +14,7 @@ trait MiddlewareTrait
      *
      * @var array
      */
-    protected array $middleware = [];
+    protected $middleware = [];
 
     /**
      * Get middleware list.
@@ -36,9 +31,11 @@ trait MiddlewareTrait
      *
      * @param array|string $middlewareList
      *
-     * @return Group|MiddlewareTrait|Route
+     * @throws AnnotationException
+     *
+     * @return static
      */
-    public function setMiddleware(array|string $middlewareList): self
+    public function setMiddleware($middlewareList): self
     {
         $this->middleware = [];
 

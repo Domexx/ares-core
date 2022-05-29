@@ -1,9 +1,4 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework;
 
@@ -35,8 +30,7 @@ class Config implements ConfigInterface, ArrayAccess, IteratorAggregate
      * @param mixed $context Raw array of configuration options or path to a
      *                       configuration file or directory containing one or
      *                       more configuration files
-     * @param string|null $prefix A key under which the loaded config will be nested
-     * @throws InvalidContextException
+     * @param string $prefix A key under which the loaded config will be nested
      */
     public function __construct($context = null, string $prefix = null)
     {
@@ -61,7 +55,7 @@ class Config implements ConfigInterface, ArrayAccess, IteratorAggregate
      *
      * @param string $path A path to a directory of configuration files
      *
-     * @return ConfigInterface A new ConfigInterface object
+     * @return \Ares\Framework\Interfaces\ConfigInterface A new ConfigInterface object
      */
     public static function fromDirectory(string $path): ConfigInterface
     {
@@ -87,7 +81,7 @@ class Config implements ConfigInterface, ArrayAccess, IteratorAggregate
      *
      * @return bool True on success, otherwise false
      */
-    public function set(string $key, mixed $value): bool
+    public function set(string $key, $value): bool
     {
         $config = &$this->config;
 
@@ -104,11 +98,11 @@ class Config implements ConfigInterface, ArrayAccess, IteratorAggregate
      * Retrieve a configuration option via a provided key.
      *
      * @param string $key Unique configuration option key
-     * @param mixed|null $default Default value to return if option does not exist
+     * @param mixed $default Default value to return if option does not exist
      *
      * @return mixed Stored config item or $default value
      */
-    public function get(string $key, mixed $default = null): mixed
+    public function get(string $key, $default = null)
     {
         $config = $this->config;
 
@@ -149,11 +143,11 @@ class Config implements ConfigInterface, ArrayAccess, IteratorAggregate
      * @param string $key Unique configuration option key
      * @param mixed $value Config item value
      *
-     * @return true
-     *@throws RuntimeException
+     * @throws RuntimeException
      *
+     * @return true
      */
-    public function append(string $key, mixed $value): bool
+    public function append(string $key, $value): bool
     {
         $config = &$this->config;
 
@@ -176,11 +170,11 @@ class Config implements ConfigInterface, ArrayAccess, IteratorAggregate
      * @param string $key Unique configuration option key
      * @param mixed $value Config item value
      *
-     * @return true
-     *@throws RuntimeException
+     * @throws RuntimeException
      *
+     * @return true
      */
-    public function prepend(string $key, mixed $value): bool
+    public function prepend(string $key, $value): bool
     {
         $config = &$this->config;
 
@@ -217,11 +211,11 @@ class Config implements ConfigInterface, ArrayAccess, IteratorAggregate
      * Load configuration options from a file or directory.
      *
      * @param string $path Path to configuration file or directory
-     * @param string|null $prefix A key under which the loaded config will be nested
+     * @param string $prefix A key under which the loaded config will be nested
      * @param bool $override Whether or not to override existing options with
      *                       values from the loaded file
      *
-     * @return ConfigInterface This Config object
+     * @return \Ares\Framework\Interfaces\ConfigInterface This Config object
      */
     public function load(string $path, string $prefix = null, bool $override = true): ConfigInterface
     {
@@ -246,11 +240,11 @@ class Config implements ConfigInterface, ArrayAccess, IteratorAggregate
     /**
      * Merge another Config object into this one.
      *
-     * @param ConfigInterface $config Instance of Config
+     * @param \Ares\Framework\Interfaces\ConfigInterface $config Instance of Config
      * @param bool $override Whether or not to override existing options with
      *                       values from the merged config object
      *
-     * @return ConfigInterface This Config object
+     * @return \Ares\Framework\Interfaces\ConfigInterface This Config object
      */
     public function merge(ConfigInterface $config, bool $override = true): ConfigInterface
     {
@@ -268,8 +262,7 @@ class Config implements ConfigInterface, ArrayAccess, IteratorAggregate
      *
      * @param string $key Unique configuration option key
      *
-     * @return ConfigInterface A new ConfigInterface object
-     * @throws InvalidContextException
+     * @return \Ares\Framework\Interfaces\ConfigInterface A new ConfigInterface object
      */
     public function split(string $key): ConfigInterface
     {

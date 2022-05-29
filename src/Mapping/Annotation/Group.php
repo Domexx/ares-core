@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Mapping\Annotation;
 
@@ -27,14 +22,14 @@ class Group extends AbstractAnnotation
      *
      * @var string
      */
-    protected string $parent;
+    protected $parent;
 
     /**
      * Group name prefix.
      *
      * @var string
      */
-    protected string $prefix;
+    protected $prefix;
 
     /**
      * Get parent group.
@@ -81,8 +76,8 @@ class Group extends AbstractAnnotation
      */
     public function setPrefix(string $prefix): self
     {
-        if (str_contains(\trim($prefix), ' ')) {
-            throw new AnnotationException('Group prefixes must not contain spaces');
+        if (\strpos(\trim($prefix), ' ') !== false) {
+            throw new AnnotationException(\sprintf('Group prefixes must not contain spaces'));
         }
 
         $this->prefix = \trim($prefix);

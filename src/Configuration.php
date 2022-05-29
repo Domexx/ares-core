@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework;
 
@@ -22,23 +17,23 @@ class Configuration
     /**
      * Routing sources.
      *
-     * @var array
+     * @var mixed[]
      */
-    protected array $sources = [];
+    protected $sources = [];
 
     /**
      * Routes with trailing slash.
      *
      * @var bool
      */
-    protected bool $trailingSlash = false;
+    protected $trailingSlash = false;
 
     /**
      * Placeholder aliases.
      *
      * @var array<string, string>
      */
-    protected array $placeholderAliases = [
+    protected $placeholderAliases = [
         'any' => '[^}]+',
         'numeric' => '[0-9]+',
         'number' => '[0-9]+',
@@ -55,21 +50,21 @@ class Configuration
      *
      * @var MetadataResolver
      */
-    protected MetadataResolver $metadataResolver;
+    protected $metadataResolver;
 
     /**
      * Route resolver.
      *
      * @var RouteResolver
      */
-    protected RouteResolver $routeResolver;
+    protected $routeResolver;
 
     /**
      * Naming strategy.
      *
      * @var Strategy
      */
-    protected Strategy $namingStrategy;
+    protected $namingStrategy;
 
     /**
      * Configuration constructor.
@@ -78,7 +73,7 @@ class Configuration
      *
      * @throws \InvalidArgumentException
      */
-    public function __construct(mixed $configurations = [])
+    public function __construct($configurations = [])
     {
         if (!\is_array($configurations) && !$configurations instanceof \Traversable) {
             throw new \InvalidArgumentException('Configurations must be an iterable');
@@ -116,7 +111,7 @@ class Configuration
     /**
      * Get routing paths.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getSources(): array
     {
@@ -126,7 +121,7 @@ class Configuration
     /**
      * Set routing paths.
      *
-     * @param array $sources
+     * @param mixed[] $sources
      *
      * @return self
      */
@@ -150,7 +145,7 @@ class Configuration
      *
      * @return self
      */
-    public function addSource(mixed $source): self
+    public function addSource($source): self
     {
         if (!\is_string($source) && !\is_array($source) && !$source instanceof DriverInterface) {
             throw new \InvalidArgumentException(\sprintf(

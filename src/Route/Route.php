@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Route;
 
@@ -17,13 +12,19 @@ use Psr\Http\Message\ServerRequestInterface;
 use Slim\Interfaces\CallableResolverInterface;
 use Slim\Interfaces\InvocationStrategyInterface;
 use Slim\Routing\Route as SlimRoute;
-use Slim\Routing\RouteGroup;
 
 /**
  * Metadata aware route.
  */
 class Route extends SlimRoute
 {
+    /**
+     * Route metadata.
+     *
+     * @var RouteMetadata|null
+     */
+    protected $metadata;
+
     /**
      * Route constructor.
      *
@@ -35,7 +36,7 @@ class Route extends SlimRoute
      * @param RouteMetadata|null               $metadata
      * @param ContainerInterface|null          $container
      * @param InvocationStrategyInterface|null $invocationStrategy
-     * @param RouteGroup[]                     $groups
+     * @param \Slim\Routing\RouteGroup[]       $groups
      * @param int                              $identifier
      *
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
@@ -46,7 +47,7 @@ class Route extends SlimRoute
         $callable,
         ResponseFactoryInterface $responseFactory,
         CallableResolverInterface $callableResolver,
-        protected ?RouteMetadata $metadata = null,
+        ?RouteMetadata $metadata = null,
         ?ContainerInterface $container = null,
         ?InvocationStrategyInterface $invocationStrategy = null,
         array $groups = [],
@@ -63,6 +64,8 @@ class Route extends SlimRoute
             $groups,
             $identifier
         );
+
+        $this->metadata = $metadata;
     }
 
     /**
@@ -114,11 +117,11 @@ class Route extends SlimRoute
     /**
      * Transform route arguments.
      *
-     * @param array $arguments
+     * @param mixed[] $arguments
      *
      * @throws \RuntimeException
      *
-     * @return array
+     * @return mixed[]
      */
     protected function transformArguments(array $arguments): array
     {
@@ -151,7 +154,7 @@ class Route extends SlimRoute
      *
      * @param RouteMetadata $route
      *
-     * @return array
+     * @return mixed[]
      */
     protected function getRouteParameters(RouteMetadata $route): array
     {

@@ -1,27 +1,19 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Trait;
 
 use ArrayIterator;
 use Traversable;
 
-/**
- * @Trait Arrayable
- */
 trait Arrayable
 {
     /**
      * Retrieve an the config array as an iterator.
      *
-     * @return Traversable|ArrayIterator The conifg as a traversable iterator
+     * @return Traversable The conifg as a traversable iterator
      */
     #[\ReturnTypeWillChange]
-    public function getIterator(): Traversable|ArrayIterator
+    public function getIterator()
     {
         return new ArrayIterator($this->config);
     }
@@ -34,7 +26,7 @@ trait Arrayable
      * @return bool
      */
     #[\ReturnTypeWillChange]
-    public function offsetExists($offset): bool
+    public function offsetExists($offset)
     {
         return isset($this->config[$offset]);
     }
@@ -47,7 +39,7 @@ trait Arrayable
      * @return mixed
      */
     #[\ReturnTypeWillChange]
-    public function offsetGet($offset): mixed
+    public function offsetGet($offset)
     {
         return $this->config[$offset];
     }
@@ -59,7 +51,7 @@ trait Arrayable
      * @param mixed $value The value to set
      */
     #[\ReturnTypeWillChange]
-    public function offsetSet(mixed $offset, mixed $value): void
+    public function offsetSet($offset, $value)
     {
         $this->config[$offset] = $value;
     }
@@ -67,10 +59,10 @@ trait Arrayable
     /**
      * Unset an item at a specific offset.
      *
-     * @param $offset
+     * @param $offset The offset to unset
      */
     #[\ReturnTypeWillChange]
-    public function offsetUnset($offset): void
+    public function offsetUnset($offset)
     {
         unset($this->config[$offset]);
     }

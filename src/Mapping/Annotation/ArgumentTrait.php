@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Mapping\Annotation;
 
@@ -15,14 +10,14 @@ trait ArgumentTrait
     /**
      * Arguments.
      *
-     * @var array
+     * @var mixed[]
      */
-    protected array $arguments = [];
+    protected $arguments = [];
 
     /**
      * Get arguments.
      *
-     * @return array
+     * @return mixed[]
      */
     public function getArguments(): array
     {
@@ -32,9 +27,9 @@ trait ArgumentTrait
     /**
      * Set arguments.
      *
-     * @param array $arguments
+     * @param mixed[] $arguments
      *
-     * @return Group|ArgumentTrait|Route
+     * @return self
      */
     public function setArguments(array $arguments): self
     {

@@ -1,9 +1,4 @@
 <?php
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Loader;
 
@@ -17,7 +12,7 @@ class Toml extends Loader
      * Retrieve the contents of a .toml file and convert it to an array of
      * configuration options.
      *
-     * @throws InvalidFileException
+     * @throws \Ares\Framework\Exception\InvalidFileException
      *
      * @return array Array of configuration options
      */

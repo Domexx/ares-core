@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Mapping\Metadata;
 
@@ -17,14 +12,14 @@ class GroupMetadata extends AbstractMetadata
      *
      * @var self
      */
-    protected GroupMetadata $parent;
+    protected $parent;
 
     /**
      * Route prefix.
      *
      * @var string
      */
-    protected string $prefix;
+    protected $prefix;
 
     /**
      * Get parent group.

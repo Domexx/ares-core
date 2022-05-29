@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Route;
 
@@ -17,13 +12,21 @@ use Ares\Framework\Mapping\Metadata\RouteMetadata;
 class RouteResolver
 {
     /**
+     * Routing configuration.
+     *
+     * @var Configuration
+     */
+    protected $configuration;
+
+    /**
      * Route resolver constructor.
      *
      * @param Configuration $configuration
      */
-    public function __construct(
-        protected Configuration $configuration
-    ) {}
+    public function __construct(Configuration $configuration)
+    {
+        $this->configuration = $configuration;
+    }
 
     /**
      * Get route name.

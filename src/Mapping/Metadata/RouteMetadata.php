@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Mapping\Metadata;
 
@@ -19,47 +14,47 @@ class RouteMetadata extends AbstractMetadata
      *
      * @var string
      */
-    protected string $name;
+    protected $name;
 
     /**
      * Parent group metadata.
      *
      * @var GroupMetadata
      */
-    protected GroupMetadata $group;
+    protected $group;
 
     /**
      * Parent's group chain.
      *
      * @var GroupMetadata[]
      */
-    protected array $groupChain;
+    protected $groupChain;
 
     /**
      * Parameters transformer.
      *
      * @var string
      */
-    protected string $transformer;
+    protected $transformer;
 
     /**
      * Route methods.
      *
      * @var string[]
      */
-    protected array $methods = [];
+    protected $methods = [];
 
     /**
      * XmlHttpRequest constraint.
      *
      * @var bool
      */
-    protected bool $xmlHttpRequest = false;
+    protected $xmlHttpRequest = false;
 
     /**
      * Route invokable.
      *
-     * @var callable|array|string
+     * @var callable|mixed[]|string
      */
     protected $invokable;
 
@@ -68,7 +63,7 @@ class RouteMetadata extends AbstractMetadata
      *
      * @var int
      */
-    protected int $priority = 0;
+    protected $priority = 0;
 
     /**
      * Get route name.
@@ -222,9 +217,9 @@ class RouteMetadata extends AbstractMetadata
     /**
      * Get route invokable.
      *
-     * @return callable|array|string
+     * @return callable|mixed[]|string
      */
-    public function getInvokable(): array|callable|string
+    public function getInvokable()
     {
         return $this->invokable;
     }
@@ -238,7 +233,7 @@ class RouteMetadata extends AbstractMetadata
      *
      * @return self
      */
-    public function setInvokable(mixed $invokable): self
+    public function setInvokable($invokable): self
     {
         if (!\is_string($invokable) && !\is_array($invokable) && !\is_callable($invokable)) {
             throw new MetadataException('Route invokable does not seem to be supported by Slim router');

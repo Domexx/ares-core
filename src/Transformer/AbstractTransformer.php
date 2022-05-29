@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Transformer;
 
@@ -40,7 +35,7 @@ abstract class AbstractTransformer implements ParameterTransformer
      *
      * @return bool|float|int|string
      */
-    protected function transformToPrimitive(string $parameter, string $type): float|bool|int|string
+    protected function transformToPrimitive(string $parameter, string $type)
     {
         switch ($type) {
             case 'int':
@@ -67,5 +62,5 @@ abstract class AbstractTransformer implements ParameterTransformer
      *
      * @return mixed
      */
-    abstract protected function transformParameter(string $parameter, string $type): mixed;
+    abstract protected function transformParameter(string $parameter, string $type);
 }

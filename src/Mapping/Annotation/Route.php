@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Mapping\Annotation;
 
@@ -27,14 +22,14 @@ class Route extends AbstractAnnotation
      *
      * @var string
      */
-    protected string $name;
+    protected $name;
 
     /**
      * Parameters transformer.
      *
      * @var string
      */
-    protected string $transformer;
+    protected $transformer;
 
     /**
      * Route methods.
@@ -48,14 +43,14 @@ class Route extends AbstractAnnotation
      *
      * @var bool
      */
-    protected bool $xmlHttpRequest = false;
+    protected $xmlHttpRequest = false;
 
     /**
      * Route load priority.
      *
      * @var int
      */
-    protected int $priority = 0;
+    protected $priority = 0;
 
     /**
      * Get route name.
@@ -78,12 +73,12 @@ class Route extends AbstractAnnotation
      */
     public function setName(string $name): self
     {
-        if (str_contains(\trim($name), ' ')) {
-            throw new AnnotationException('Route name must not contain spaces');
+        if (\strpos(\trim($name), ' ') !== false) {
+            throw new AnnotationException(\sprintf('Route name must not contain spaces'));
         }
 
         if (\trim($name) === '') {
-            throw new AnnotationException('Route name can not be empty');
+            throw new AnnotationException(\sprintf('Route name can not be empty'));
         }
 
         $this->name = \trim($name);
@@ -134,7 +129,7 @@ class Route extends AbstractAnnotation
      *
      * @return self
      */
-    public function setMethods(mixed $methods): self
+    public function setMethods($methods): self
     {
         $this->methods = [];
 

@@ -1,9 +1,4 @@
 <?php declare(strict_types=1);
-/**
- * @copyright Copyright (c) Ares (https://www.ares.to)
- *
- * @see LICENSE (MIT)
- */
 
 namespace Ares\Framework\Mapping\Annotation;
 
@@ -17,21 +12,21 @@ trait PathTrait
      *
      * @var string
      */
-    protected string $pattern;
+    protected $pattern;
 
     /**
      * Pattern path placeholders regex.
      *
      * @var array
      */
-    protected array $placeholders = [];
+    protected $placeholders = [];
 
     /**
      * Pattern parameters.
      *
      * @var array
      */
-    protected array $parameters = [];
+    protected $parameters = [];
 
     /**
      * Get pattern path.
@@ -48,7 +43,7 @@ trait PathTrait
      *
      * @param string $pattern
      *
-     * @return Group|PathTrait|Route
+     * @return static
      */
     public function setPattern(string $pattern): self
     {
@@ -72,7 +67,7 @@ trait PathTrait
      *
      * @param array $placeholders
      *
-     * @return Group|PathTrait|Route
+     * @return static
      */
     public function setPlaceholders(array $placeholders): self
     {
@@ -96,7 +91,7 @@ trait PathTrait
      *
      * @param array $parameters
      *
-     * @return Group|PathTrait|Route
+     * @return static
      */
     public function setParameters(array $parameters): self
     {
