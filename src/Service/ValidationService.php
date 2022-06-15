@@ -65,7 +65,7 @@ class ValidationService
 
             $this->setErrors($errors);
 
-            $validationException = new ValidationException('', 422);
+            $validationException = new ValidationException('', 422, HttpResponseCodeInterface::HTTP_RESPONSE_NOT_FOUND);
             $validationException->setErrors($this->getErrors());
 
             throw $validationException;
